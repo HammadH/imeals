@@ -96,4 +96,9 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 MEDIA_URL = '/media/'
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.webfaction.com'
+EMAIL_HOST_USER = 'iftarmeals'
+EMAIL_HOST_PASSWORD = 'quakeroats9'
+DEFAULT_FROM_EMAIL = 'orders@iftarmeals.com'
+SERVER_EMAIL = 'orders@iftarmeals.com'
