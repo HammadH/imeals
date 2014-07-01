@@ -1,0 +1,203 @@
+
+ 
+
+{% load staticfiles %}
+
+{% load bootstrap3 %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="assets/ico/favicon.png">
+
+    <title>Iftar Meals</title>
+
+    <!-- Bootstrap core CSS -->
+    <link  rel="stylesheet" href="{% static "css/bootstrap.css" %}">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static "css/main.css" %}" rel="stylesheet">
+	<link rel="stylesheet" href="{% static "css/font-awesome.min.css" %}">
+	<link href="{% static "css/thumbnail.css" %}" rel="stylesheet">
+	<link href="{% static "css/carousel_3jar.css" %}" rel="stylesheet">
+
+    <script src="{% static "js/jquery.min.js" %}"></script>
+	<script src="{% static "js/modernizr.custom.js" %}"></script>
+	
+
+	
+    <link href='http://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=EB+Garamond' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="assets/js/html5shiv.js"></script>
+      <script src="assets/js/respond.min.js"></script>
+    <![endif]-->
+
+    
+<script>
+
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-52456027-1', 'auto');
+  ga('send', 'pageview');
+
+
+</script>
+<script>
+$(document).ready(function() {
+  //Set the carousel options
+  $('#quote-carousel').carousel({
+    pause: true,
+    interval: 4000,
+  });
+});
+</script>
+
+  </head>
+
+  <body data-spy="scroll" data-offset="0" data-target="#theMenu">
+		
+	<!-- Menu -->
+	
+
+
+	
+	<!-- ========== HEADER SECTION ========== -->
+	<section id="home" name="home"></section>
+	
+	<div class="container">
+			
+<div class='row' style="text-align:center;margin-top:4%;">
+	<img src="{% static "img/stamp-success.png" %}">
+</div>
+<div class='row' style='margin-top:5%'>
+<h2>Thank you!</h2> 
+
+<h4>Your order was succesful. You should receive a confirmation call shortly. In case you don't get the call, please send an email to <b>orders@iftarmeals.com</b> for following up on your order.</h4>
+</br>
+
+<h4>In the mean time gain some Ajar:</h4>
+<br>
+
+<div class='row'>
+    <div class='col-md-offset-2 col-md-8'>
+      <div class="carousel slide" data-ride="carousel" id="quote-carousel">
+        <!-- Bottom Carousel Indicators -->
+        <ol class="carousel-indicators">
+          <li data-target="#quote-carousel" data-slide-to="0" class="active"></li>
+          <li data-target="#quote-carousel" data-slide-to="1"></li>
+          <li data-target="#quote-carousel" data-slide-to="2"></li>
+        </ol>
+        
+        <!-- Carousel Slides / Quotes -->
+        <div class="carousel-inner">
+        
+          <!-- Quote 1 -->
+          <div class="item active">
+            <blockquote>
+              <div class="row">
+                
+               
+                 <div class="alert alert-danger">
+<h4>"[The Prophet (saws) said : Whoever sends a prayer upon me, Allah sends ten upon him.]"</h4>
+
+<h3>
+اللّهُـمَّ صَلِّ عَلـى مُحمَّـد، وَعَلـى آلِ مُحمَّد، كَمـا صَلَّيـتَ عَلـىإبْراهـيمَ وَعَلـى آلِ إبْراهـيم، إِنَّكَ حَمـيدٌ مَجـيد ، اللّهُـمَّ بارِكْ عَلـى مُحمَّـد، وَعَلـى آلِ مُحمَّـد، كَمـا بارِكْتَ عَلـىإبْراهـيمَ وَعَلـى آلِ إبْراهيم، إِنَّكَ حَمـيدٌ مَجـيد
+
+</h3>
+</div>
+               
+              </div>
+            </blockquote>
+          </div>
+          <!-- Quote 2 -->
+          <div class="item">
+            <blockquote>
+              <div class="row">
+              	
+                <div class="alert alert-danger">
+<h4>"O Allah, I ask You by Your mercy which envelopes all things, that You forgive me."</h4>
+<h3>اللّهُـمَّ إِنَّـي أَسْـأَلُـكَ بِرَحْمَـتِكَ الّتي وَسِـعَت كُلَّ شيء، أَنْ تَغْـفِرَ لي</h3>
+			</div>
+                  
+                </div>
+              </div>
+            </blockquote>
+          
+          <!-- Quote 3 -->
+          <div class="item">
+            <blockquote>
+              <div class="row">
+
+              	<div class="alert alert-danger">
+<h4>"The Prophet (saws) said : Do not take my grave as a place of habitual ceremony. Send prayers upon me, for verily your prayers reach me wherever you are.]"</h4>
+<h3>
+اللّهُـمَّ صَلِّ عَلـى مُحمَّـد، وَعَلـى آلِ مُحمَّد، كَمـا صَلَّيـتَ عَلـىإبْراهـيمَ وَعَلـى آلِ إبْراهـيم، إِنَّكَ حَمـيدٌ مَجـيد ، اللّهُـمَّ بارِكْ عَلـى مُحمَّـد، وَعَلـى آلِ مُحمَّـد، كَمـا بارِكْتَ عَلـىإبْراهـيمَ وَعَلـى آلِ إبْراهيم، إِنَّكَ حَمـيدٌ مَجـيد
+</h3>
+</div>
+                
+              </div>
+            </blockquote>
+          </div>
+        </div>
+        
+        <!-- Carousel Buttons Next/Prev -->
+        <a data-slide="prev" href="#quote-carousel" class="left carousel-control"><i class="fa fa-chevron-left"></i></a>
+        <a data-slide="next" href="#quote-carousel" class="right carousel-control"><i class="fa fa-chevron-right"></i></a>
+      </div>                          
+    </div>
+</div>
+
+
+
+
+
+
+
+
+	</div>
+	</div>	
+	
+
+     
+       
+	
+
+	
+	
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
