@@ -27,7 +27,7 @@ class ProcessOrder(View):
 	def post(self, request, *args, **kwargs):
 		
 		form = UserForm(request.POST)
-		import pdb;pdb.set_trace()
+		
 		if form.is_valid():
 			try:
 				user = User.objects.get(username=form.cleaned_data['username'])
@@ -35,6 +35,7 @@ class ProcessOrder(View):
 				user = User.objects.create(**form.cleaned_data)
 			meal = Meal.objects.get(id=kwargs['id'])
 			order = Order(user=user, meal=meal, count=int(request.POST.get('quant[1]')))
+			order.save()
 			return HttpResponse('ok')
 		else:
 			context = {}

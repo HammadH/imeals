@@ -4,7 +4,8 @@ from django.contrib import admin
 from sorl.thumbnail import ImageField
 
 def get_logo_path(instance, filename):
-	return "/media/Restaurant_images/%s/Logos/%s" %(instance, filename)
+	import pdb;pdb.set_trace()
+	return "media/Restaurant_images/%s/Logos/%s" %(instance, filename)
 
 class Restaurant(models.Model):
 	name = models.CharField(

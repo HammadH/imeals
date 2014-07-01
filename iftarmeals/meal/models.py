@@ -1,5 +1,9 @@
 from django.db import models
 from django.contrib import admin
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+from django.core.mail import send_mail
+from django.template.loader import render_to_string
 
 from restaurant.models import Restaurant
 
@@ -24,12 +28,29 @@ class Meal(models.Model):
 
 
 class Order(models.Model):
-	user = models.OneToOneField('users.User', blank=False, related_name='orders')
-	meal = models.OneToOneField(Meal, blank=False)
+	user = models.ForeignKey('users.User', blank=False, related_name='orders')
+	meal = models.ForeignKey(Meal, blank=False)
 	count = models.IntegerField(default=1)
 
 	def __unicode__(self):
 		return "Order:%s by %s" %(self.meal, self.user)
+
+
+@receiver(post_save, sender = Order)
+def meal_ordererd(sender, **kwargs):
+	if kwargs['created']:
+		order = kwargs['instance']
+		meal_item = order.meal
+		customer = order.user
+		restaurant = meal_item.restaurant
+		subject = "New Order"
+		message = render_to_string("order_email.txt", {'customer': customer, 'meal':meal_item, 'restaurant': restaurant})
+		send_mail(subject, message, 'orders@iftarmeals.com', ['wishmecake@gmail.com'], fail_silently=False)
+		return
+	else:
+		return
+
+
 
 admin.site.register(Meal)
 
