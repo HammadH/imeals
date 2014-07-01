@@ -1,0 +1,3 @@
+Customer: {{customer.username}}
+Meal: {{meal.name}}
+Restaurant: {{restaurant.name}}
