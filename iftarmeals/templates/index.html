@@ -1,0 +1,136 @@
+{% load staticfiles %}
+{% load thumbnail %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="assets/ico/favicon.png">
+
+    <title>Iftar Meals</title>
+
+    <!-- Bootstrap core CSS -->
+    <link  rel="stylesheet" href="{% static "css/bootstrap.css" %}">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static "css/main.css" %}" rel="stylesheet">
+	<link rel="stylesheet" href="{% static "css/font-awesome.min.css" %}">
+	<link href="{% static "css/thumbnail.css" %}" rel="stylesheet">
+
+    <script src="{% static "js/jquery.min.js" %}"></script>
+	<script src="{% static "js/modernizr.custom.js" %}"></script>
+	
+
+	
+    <link href='http://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=EB+Garamond' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="assets/js/html5shiv.js"></script>
+      <script src="assets/js/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body data-spy="scroll" data-offset="0" data-target="#theMenu">
+		
+	<!-- Menu -->
+	<nav class="menu" id="theMenu">
+		<div class="menu-wrap">
+			<h1 class="logo"><a href="index.html#home">Minimal</a></h1>
+			<i class="icon-remove menu-close"></i>
+			<a href="#home" class="smoothScroll">Home</a>
+			<a href="#about" class="smoothScroll">About</a>
+			<a href="#portfolio" class="smoothScroll">Portfolio</a>
+			<a href="#contact" class="smoothScroll">Contact</a>
+			<a href="#"><i class="icon-facebook"></i></a>
+			<a href="#"><i class="icon-twitter"></i></a>
+			<a href="#"><i class="icon-dribbble"></i></a>
+			<a href="#"><i class="icon-envelope"></i></a>
+		</div>
+		
+		<!-- Menu button -->
+		<div id="menuToggle"><i class="icon-reorder"></i></div>
+	</nav>
+
+
+	
+	<!-- ========== HEADER SECTION ========== -->
+	<section id="home" name="home"></section>
+	<div id="headerwrap">
+		<div class="container">
+			
+			<br>
+			<div class="row">
+				<h1 style="text-shadow: 3px 3px 8px #000;">IFTAR MEALS</h1>
+				
+				<h3 style="text-shadow: 1x 1px 5px #000;">Discover & order the best iftar meals</h3>
+				<br>
+				<br>
+				<div class="col-lg-6 col-lg-offset-3">
+				</div>
+			</div>
+			
+		</div><!-- /container -->
+
+	</div>
+
+			<div class='row' style="background-color:#4A4A4A; width:100%;height:20px;">
+
+			</div>
+	<!-- /headerwrap -->
+	
+<div class='row' style="margin:15px; text-align:center;">
+	<h3>Iftar Meals</h3>
+
+			</div>
+	
+	<!-- ========== ABOUT SECTION ========== -->
+	<div class="container">
+		<div class="row" style="margin:30px;">
+
+	
+		{% for item in object_list %}
+      	<div class="col-xs-18 col-sm-6 col-md-3" style="text-align:center">
+          <div class="thumbnail">
+          
+          <a href="{% url 'meal_detail_view' id=item.id %}">
+          	{% thumbnail item.image_1 "230x170" crop="center" as im %}
+    			<img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
+			{% endthumbnail %}</a>
+              <div class="caption">
+                <h4>{{item.name}}</h4>
+                <hr>
+                <p >{{item.description|truncatewords:5}}</p>
+                <hr>
+                <h4>{{item.price}} AED</h4>
+                <p>{{item.delivery_time}}</p>
+                <hr>
+                <a href="{% url 'process_order' id=item.id %}" class="btn btn-danger btn-md" role="button">Order</a>
+            </div>
+          </div>
+        </div>
+
+        {% endfor %}
+        </div>
+
+			</div>
+
+	
+	
+
+	
+	
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+	<script src="{% static "js/classie.js" %}"></script>
+    <script src="{% static "js/bootstrap.min.js" %}"></script>
+    <script src="assets/js/smoothscroll.js"></script>
+	<script src="assets/js/main.js"></script>
+</body>
+</html>
