@@ -1,8 +1,8 @@
 from django.shortcuts import render_to_response
-from django.views.generic import View
-from django.http import HttpResponse
+from django.views.generic import View, TemplateView
+from django.http import HttpResponse, HttpResponseRedirect
 from django.template import RequestContext
-
+from django.core.urlresolvers import reverse
 
 from meal.models import Meal, Order
 from users.forms import UserForm
@@ -36,19 +36,16 @@ class ProcessOrder(View):
 			meal = Meal.objects.get(id=kwargs['id'])
 			order = Order(user=user, meal=meal, count=int(request.POST.get('quant[1]')))
 			order.save()
-			return HttpResponse('ok')
+			return HttpResponseRedirect(reverse('order_success'))
 		else:
 			context = {}
 			context['item'] = Meal.objects.get(id=int(kwargs['id']))
 			context['form'] = form
 			return render_to_response('order.html', context, RequestContext(request))
 
-
-			
-
-
-
-	
 process_order = ProcessOrder.as_view()
 
+class OrderSuccess(TemplateView):
+	template_name = 'order_success.html'
 
+order_success = OrderSuccess.as_view()
