@@ -76,10 +76,19 @@ $('.carousel').carousel({
 			</div>
 	<!-- /headerwrap -->
 	
-<div class='row' style="margin:15px; text-align:center;">
-	<h3>{{item.name}}</h3>
+	<div class='row' style="margin:15px; text-align:center;">
+		<div class='col-lg-7'>
+			<h3>{{item.name}}</h3>
+		</div>
 
-</div>
+		<div class='col-lg-5'>
+			<div class='pull-left'>
+			{% thumbnail restaurant.logo "150x100" crop="center" as im %}
+    			<img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
+			{% endthumbnail %}
+		</div>
+		</div>
+	</div>
 	
 	<!-- ========== ABOUT SECTION ========== -->
 	<div class="container">
@@ -87,6 +96,8 @@ $('.carousel').carousel({
 
 	
 		<div class='col-lg-7'>
+			
+
 			
 	<div class="carousel slide article-slide" id="article-photo-carousel">
 
@@ -133,7 +144,7 @@ $('.carousel').carousel({
 
 		</div>
 
-		<div class='col-lg-5' style="text-align:center">
+		<div class='col-lg-5 well' style="text-align:center; background-color:white;">
 			
 			<div class='row'>
 				<div class = 'col-lg-12'>
@@ -144,17 +155,6 @@ $('.carousel').carousel({
 
 			</div>
 			<hr>
-			<div class='row'>
-				<div class = 'col-lg-4'>
-
-				<h4>Delivery Time</h4>
-			</div>
-			<div class='col-lg-8'>
-
-			 <p>{{item.delivery_time}}</p>
-			</div>
-
-			</div>
 
 			<div class='row'>
 				<div class = 'col-lg-4'>
@@ -163,10 +163,23 @@ $('.carousel').carousel({
 			</div>
 			<div class='col-lg-8'>
 
-			 <p>{{item.price}}</p>
+			 <h4><b>{{item.price}}</b> AED</h4>
 			</div>
 
 			</div>
+			<div class='row'>
+				<div class = 'col-lg-4'>
+
+				<h4>Delivery Time</h4>
+			</div>
+			<div class='col-lg-8'>
+
+			 <h4>{{item.delivery_time}}</h4>
+			</div>
+
+			</div>
+
+			
 			<hr>
 			<div class='row'>
 				<div class = 'col-lg-4'>
@@ -175,7 +188,7 @@ $('.carousel').carousel({
 			</div>
 			<div class='col-lg-8'>
 
-			 <p>{{item.delivery_charge}}</p>
+			 <h4>{{restaurant.delivery_charges}}</h4>
 			</div>
 
 			</div>
@@ -186,26 +199,17 @@ $('.carousel').carousel({
 			</div>
 			<div class='col-lg-8'>
 
-			 <p>{{item.delivery_areas}}</p>
+			 <h4>{{restaurant.delivery_areas}}</h4>
 			</div>
 
 			</div>
-			
-			<hr>
-			
-			
-
-
-
 		</div>
-
-
-
-
-		</div>
-
+<div style="text-align:center">
+<a href="{% url 'process_order' id=item.id %}" class="btn btn-danger btn-lg" role="button">Order</a>
+</div>
+</div>
 <div class='row' style="text-align:center">
-	 <a href="{% url 'process_order' id=item.id %}" class="btn btn-danger btn-md" role="button">Order</a>``
+	
 </div>
 <hr>
 

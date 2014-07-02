@@ -87,6 +87,7 @@ a:after {
 	background-position: bottom;
 	min-height: 700px;
 	width: 100%;
+	filter: blur(5px);
 	
     -webkit-background-size: 100%;
     -moz-background-size: 100%;
@@ -97,6 +98,9 @@ a:after {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+
+    
+
 }
 
 #headerwrap h1 {

@@ -34,7 +34,12 @@ class ProcessOrder(View):
 			except User.DoesNotExist:
 				user = User.objects.create(**form.cleaned_data)
 			meal = Meal.objects.get(id=kwargs['id'])
-			order = Order(user=user, meal=meal, count=int(request.POST.get('quant[1]')))
+			count = request.POST.get('quant[1]')
+			try:
+				count = int(count)
+			except:
+				count = 1
+			order = Order(user=user, meal=meal, count=count)
 			order.save()
 			return HttpResponseRedirect(reverse('order_success'))
 		else:

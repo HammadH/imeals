@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="shortcut icon" href="assets/ico/favicon.png">
+
 
     <title>Iftar Meals</title>
 
@@ -19,10 +19,11 @@
     <!-- Custom styles for this template -->
     <link href="{% static "css/main.css" %}" rel="stylesheet">
 	<link rel="stylesheet" href="{% static "css/font-awesome.min.css" %}">
-	<link href="{% static "css/thumbnail.css" %}" rel="stylesheet">
+	<link href="{% static "css/spinner.css" %}" rel="stylesheet">
 
     <script src="{% static "js/jquery.min.js" %}"></script>
-	<script src="{% static "js/modernizr.custom.js" %}"></script>
+    <link href="bootstrap-spinner.css" rel="stylesheet">
+
 	
 
 	
@@ -36,7 +37,7 @@
     <![endif]-->
   <script src="{% static "js/classie.js" %}"></script>
     <script src="{% static "js/bootstrap.min.js" %}"></script>
-     <script src="{% static "js/order_quantity.js" %}"></script>
+     <script src="{% static  "js/jquery.spinner.js" %}"></script>
   <script src="{% static  "js/main.js" %}"></script>
     
 <script>
@@ -81,11 +82,11 @@
 
 	<div class="col-lg-6">
 	
-      	<div class="col-sm-8 " style="text-align:center">
+      	<div class="col-sm-7 " style="text-align:center">
           <div class="thumbnail">
           
           <a href="{% url 'meal_detail_view' id=item.id %}">
-          	{% thumbnail item.image_1 "230x170" crop="center" as im %}
+          	{% thumbnail item.image_1 "250x190" crop="center" as im %}
     			<img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
 			{% endthumbnail %}</a>
               <div class="caption">
@@ -94,15 +95,13 @@
                 <p >{{item.description}}</p>
                 <hr>
                 <h4>{{item.price}} AED</h4>
-                <p>{{item.delivery_time}}</p>
-                <hr>
-                
+                <p>{{item.delivery_time}}</p>    
             </div>
           </div>
         </div>
     </div>
 
-    <div class="col-lg-6">
+    <div class="col-lg-6" >
     	<form method="post">{% csrf_token %}
     	<!-- {% if form.errors %}
     		{% for field in form %}
@@ -120,26 +119,14 @@
     	{% endfor %} -->
     	<!-- {% endif %} -->
     	{% bootstrap_form form %}
-    	<div class="pull-left" style="width:150px; margin:10px auto;margin-top:-10px;">
-    <p>
-      </p>
-     <b> Select Quanatity</b>
-      <div class="input-group">
-   
-          <span class="input-group-btn">
-              <button type="button" class="btn btn-default btn-number" disabled="disabled" data-type="minus" data-field="quant[1]">
-                  <span class="glyphicon glyphicon-minus"></span>
-              </button>
-          </span>
-          <input type="text" name="quant[1]" class="form-control input-number" value="1" min="1" max="10" style="font-size:22px;">
-          <span class="input-group-btn">
-              <button type="button" class="btn btn-default btn-number" data-type="plus" data-field="quant[1]">
-                  <span class="glyphicon glyphicon-plus"></span>
-              </button>
-          </span>
-      </div>
-    <p></p>
-    	<button type="submit" class="btn btn-danger btn-lg">ORDER</button>
+     <b> Select quantity</b>
+      
+     <div class="input-append spinner " style="margin:10px;" data-trigger="spinner">
+    <div class="add-on"> <a href="javascript:;" class="spin-up" data-spin="up"><i style="margin:5px;" class="icon-sort-up"></i></a> <a href="javascript:;" class="spin-down" data-spin="down"><input class="form-control" name="quant[1]" type="text" style="width:50px;text-align:center;font-size:18px;" value="1" data-rule="quantity"><i style="margin:9px;"class="icon-sort-down"></i></a> </div>
+    
+    </div>
+    	
+    	<button type="submit" class="btn btn-danger btn-lg" style="margin-top:20px;">ORDER</button>
     	</form>
     </div>
 

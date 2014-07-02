@@ -4,7 +4,6 @@ from django.contrib import admin
 from sorl.thumbnail import ImageField
 
 def get_logo_path(instance, filename):
-	import pdb;pdb.set_trace()
 	return "media/Restaurant_images/%s/Logos/%s" %(instance, filename)
 
 class Restaurant(models.Model):
@@ -14,6 +13,9 @@ class Restaurant(models.Model):
 	address = models.TextField(blank=False)
 	phone = models.CharField(max_length=10, blank=False)
 	email = models.EmailField(blank=False)
+	delivery_charges = models.CharField(max_length=30,  blank=False)
+	delivery_areas = models.TextField(blank=False)
+	order_accept_time = models.TimeField(blank=False)
 	website = models.URLField(blank=True, null=True)
 	zomato = models.URLField(blank=True, null=True)
 

@@ -1,3 +1,15 @@
-Customer: {{customer.username}}
-Meal: {{meal.name}}
-Restaurant: {{restaurant.name}}
+Hi there,
+
+	You have a new order from Iftar Meals. Please find the details below.
+
+	Customer Name: {{customer}}
+	Mobile: {{customer.mobile}}
+	Address: {{customer.address}}
+
+	Order item: {{meal}}
+	Quantity: {{quantity}}
+
+	Thank you for doing business with us.
+
+Regards,
+Iftar Meals 

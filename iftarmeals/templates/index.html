@@ -117,22 +117,31 @@
           <a href="{% url 'meal_detail_view' id=item.id %}">
           	{% thumbnail item.image_1 "230x170" crop="center" as im %}
     			<img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
-			{% endthumbnail %}</a>
+			{% endthumbnail %}
               <div class="caption">
-                <h4>{{item.name}}</h4>
+                <h4>{{item.name}}</h4></a>
                 <hr>
                 <p >{{item.description|truncatewords:5}}</p>
                 <hr>
                 <h4>{{item.price}} AED</h4>
-                <p>{{item.delivery_time}}</p>
                 <hr>
                 <a href="{% url 'process_order' id=item.id %}" class="btn btn-danger btn-md" role="button">Order</a>
+                <hr>
+              
+                {% thumbnail item.restaurant.logo "50x50" crop="center" as im %}
+    			
+    			<img  src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
+			{% endthumbnail %}
+				</div>
             </div>
           </div>
         </div>
 
         {% endfor %}
         </div>
+
+
+
 
 			</div>
 

@@ -31,6 +31,8 @@ class Order(models.Model):
 	user = models.ForeignKey('users.User', blank=False, related_name='orders')
 	meal = models.ForeignKey(Meal, blank=False)
 	count = models.IntegerField(default=1)
+	created_at = models.DateTimeField(auto_now_add=True)
+
 
 	def __unicode__(self):
 		return "Order:%s by %s" %(self.meal, self.user)
@@ -42,10 +44,11 @@ def meal_ordererd(sender, **kwargs):
 		order = kwargs['instance']
 		meal_item = order.meal
 		customer = order.user
+		quantity = order.count
 		restaurant = meal_item.restaurant
 		subject = "New Order"
-		message = render_to_string("order_email.txt", {'customer': customer, 'meal':meal_item, 'restaurant': restaurant})
-		send_mail(subject, message, 'orders@iftarmeals.com', ['wishmecake@gmail.com'], fail_silently=False)
+		message = render_to_string("order_email.txt", {'customer': customer, 'meal':meal_item, 'restaurant': restaurant, 'quantity':quantity})
+		send_mail(subject, message, 'orders@iftarmeals.com', ['hammadsyed9@gmail.com', restaurant.email,], fail_silently=False)
 		return
 	else:
 		return
